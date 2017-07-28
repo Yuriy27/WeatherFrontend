@@ -1,3 +1,30 @@
-<p>
-  weather works!
-</p>
+<div class="row">
+	<div class="col-md-3">
+		<form class="form-group">
+			<div class="form-group">
+				<select [(ngModel)]="selectedCity" name="default-city" class="form-control">
+					<option *ngFor="let city of cities" [value]="city.Name" class="form-control">{{city.Name}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input [(ngModel)]="typedCity" placeholder="Other city.." name="typed-city" class="form-control">
+			</div>
+			<div class="form-group">
+				<div class="radio">
+					<label><input type="radio" [(ngModel)]="days" name="days" [value]="1">1 day</label>
+				</div>
+				<div class="radio">
+						<label><input type="radio" [(ngModel)]="days" name="days" [value]="3">3 days</label>
+				</div>
+				<div class="radio">
+						<label><input type="radio" [(ngModel)]="days" name="days" [value]="7">7 days</label>
+				</div>
+			</div>
+			<div class="form-group">
+        <input type="submit" class="btn btn-success" value="See forecast" (click)="viewForecast()" >
+      </div>
+			
+	</form>
+	</div>
+	
+</div>
