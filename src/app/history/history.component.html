@@ -1,3 +1,31 @@
-<p>
-  history works!
-</p>
+<div class="row">
+  <h5><span class="badge badge-primary">Forecasts history</span></h5>
+  <table class="table table-bordered table-striped forecast-table">
+    <tr>
+      <th class="frc-th">Date<div><img src="assets/images/icons/date.png" class="w-icon"/></div></th>
+      <th class="frc-th">City<div><img src="assets/images/icons/city.png" class="w-icon"/></div></th>
+      <th class="frc-th">Pressure<div><img src="assets/images/icons/pressure.png" class="w-icon" /></div></th>
+      <th class="frc-th">Humidity<div><img src="assets/images/icons/humidity.png" class="w-icon" /></div></th>
+      <th class="frc-th">T. morn<div><img src="assets/images/icons/morning.png" class="w-icon" /></div></th>
+      <th class="frc-th">T. day<div><img src="assets/images/icons/day.png" class="w-icon" /></div> </th>
+      <th class="frc-th">T. even<div><img src="assets/images/icons/evening.png" class="w-icon" /></div></th>
+      <th class="frc-th">T. night<div><img src="assets/images/icons/night.png" class="w-icon" /></div></th>
+      <th class="frc-th">Wind speed<div><img src="assets/images/icons/wind.png" class="w-icon" /></div></th>
+      <th class="frc-th">Description<div><img src="assets/images/icons/description.png" class="w-icon" /></div></th>
+      <th class="frc-th">Icon</th>
+    </tr>
+    <tr *ngFor="let weather of forecasts">
+      <td class="frc-td">{{weather.Date | date: 'dd/MM/yyyy'}}</td>
+      <td class="frc-td">{{weather.City}}</td>
+      <td class="frc-td">{{weather.Pressure}}</td>
+      <td class="frc-td">{{weather.Humidity}}</td>
+      <td class="frc-td">{{weather.TemperatureMorning}}</td>
+      <td class="frc-td">{{weather.TemperatureDay}}</td>
+      <td class="frc-td">{{weather.TemperatureEvening}}</td>
+      <td class="frc-td">{{weather.TemperatureNight}}</td>
+      <td class="frc-td">{{weather.WindSpeed}}</td>
+      <td class="frc-td">{{weather.Description}}</td>
+      <td class="frc-td"><img [src]='"http://openweathermap.org/img/w/" + weather.Icon + ".png"' /></td>
+    </tr>
+  </table>
+</div>

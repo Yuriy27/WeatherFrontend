@@ -4,7 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { City } from '../models/city';
-import { host } from '../api/api-constants'
+import { host } from '../api/api-constants';
 
 @Injectable()
 export class CitiesService {
