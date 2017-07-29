@@ -1,5 +1,5 @@
 <div *ngIf="forecasts" class="row">
-  <!-- <h5><span class="badge badge-primary">Forecast for city {{forecasts.City.Name}}</span></h5> -->
+  <h5><span class="badge badge-info">Forecast for city {{forecasts.City.Name}}</span></h5> 
   <table class="table table-bordered table-striped forecast-table">
     <tr>
       <th class="frc-th">Date<div><img src="assets/images/icons/date.png" class="w-icon"/></div></th>
@@ -26,4 +26,7 @@
       <td class="frc-td"><img [src]='"http://openweathermap.org/img/w/" + weather.Weather[0].Icon + ".png"' /></td>
     </tr>
   </table>
+</div>
+<div class="error">
+  {{error}}
 </div>

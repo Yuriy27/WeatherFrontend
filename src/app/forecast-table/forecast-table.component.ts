@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -13,9 +13,11 @@ import { Forecast } from '../models/openweather/api-models';
   styleUrls: ['./forecast-table.component.css'],
   providers: [DatePipe]
 })
-export class ForecastTableComponent implements OnInit {
+export class ForecastTableComponent implements OnInit, OnDestroy {
 
   forecasts: Forecast;
+  error: string;
+  sub: any;
 
   constructor(
     private weatherService: WeatherService,
@@ -24,11 +26,26 @@ export class ForecastTableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.switchMap((params: ParamMap) => {
-      let city = params.get('city');
-      let days = +params.get('days');
-      return this.weatherService.getForecast(city, days);
-    }).subscribe(forecasts => {console.log(forecasts);this.forecasts = forecasts;});
+    // this.sub = this.route.paramMap.switchMap((params: ParamMap) => {
+    //   let city = params.get('city');
+    //   let days = +params.get('days');
+    //   let resp = this.weatherService.getForecast(city, days);
+    //   return resp;
+    // }).subscribe(forecasts => {
+    //   this.forecasts = forecasts as Forecast;
+    // });
+    this.sub = this.route.params
+      .subscribe(params => {
+        let city = params['city'];
+       let days = +params['days'];
+       this.weatherService.getForecast(city, days)
+        .then(forecasts => this.forecasts = forecasts)
+        .catch(() => this.error = 'not found');
+      });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   getDate(day: number): string {  

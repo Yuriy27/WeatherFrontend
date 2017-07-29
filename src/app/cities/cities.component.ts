@@ -12,7 +12,6 @@ import { City } from '../models/city';
 export class CitiesComponent implements OnInit {
 
   cities: City[];
-  //citiesCopy: City[];
   newCityName: string;
   updateCityName: string;
 
@@ -33,18 +32,14 @@ export class CitiesComponent implements OnInit {
   }
 
   deleteCity(city: City) {
-    //console.log('delete ', city);
     this.citiesService.deleteDefaultCity(city).then(() => this.getCities());
   }
 
   updateCity(city: City) {
-    //city.Name = this.updateCityName;
-    //console.log('update ', city);
     this.citiesService.updateDefaultCity(city).then(() => this.getCities()).catch(() => this.getCities());
   }
 
   addCity() {
-    //console.log('add ', this.newCityName);
     let city = new City();
     city.Name = this.newCityName;
     this.citiesService.addDefaultCity(city).then(() => this.getCities()).catch(() => this.getCities());;
