@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CitiesService } from '../services/cities.service';
 import { WeatherService } from '../services/weather.service';
@@ -19,7 +20,8 @@ export class WeatherComponent implements OnInit {
 
   constructor(
     private citiesService: CitiesService,
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,7 @@ export class WeatherComponent implements OnInit {
     if (this.typedCity.trim() !== '') {
       cityQuery = this.typedCity;
     }
-
+    this.router.navigate([`weather/${cityQuery}/${this.days}`]);
   }
 
 }

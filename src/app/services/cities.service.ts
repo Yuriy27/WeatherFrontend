@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { City } from '../models/city';
+import { host } from '../api/api-constants'
 
 @Injectable()
 export class CitiesService {
@@ -13,7 +14,7 @@ export class CitiesService {
   ) { }
 
   getDefaultCities(): Promise<City[]> {
-    return this.http.get('http://localhost:53545/api/v1/cities')
+    return this.http.get(`${host}/api/v1/cities`)
       .toPromise()
       .then(response => response.json() as City[]);
   }

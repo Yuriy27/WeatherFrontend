@@ -1,3 +1,29 @@
-<p>
-  forecast-table works!
-</p>
+<div *ngIf="forecasts" class="row">
+  <h5><span class="badge badge-primary">Forecast for city {{forecasts.City.Name}}</span></h5>
+  <table class="table table-bordered table-striped forecast-table">
+    <tr>
+      <th class="frc-th">Date<div><img src="assets/images/icons/date.png" class="w-icon"/></div></th>
+      <th class="frc-th">Pressure<div><img src="assets/images/icons/pressure.png" class="w-icon" /></div></th>
+      <th class="frc-th">Humidity<div><img src="assets/images/icons/humidity.png" class="w-icon" /></div></th>
+      <th class="frc-th">Temp morn<div><img src="assets/images/icons/morning.png" class="w-icon" /></div></th>
+      <th class="frc-th">Temp day<div><img src="assets/images/icons/day.png" class="w-icon" /></div> </th>
+      <th class="frc-th">Temp even<div><img src="assets/images/icons/evening.png" class="w-icon" /></div></th>
+      <th class="frc-th">Temp night<div><img src="assets/images/icons/night.png" class="w-icon" /></div></th>
+      <th class="frc-th">Wind speed<div><img src="assets/images/icons/wind.png" class="w-icon" /></div></th>
+      <th class="frc-th">Description<div><img src="assets/images/icons/description.png" class="w-icon" /></div></th>
+      <th class="frc-th">Icon</th>
+    </tr>
+    <tr *ngFor="let weather of forecasts.list">
+      <td class="frc-td">date</td>
+      <td class="frc-td">{{weather.Pressure}}</td>
+      <td class="frc-td">{{weather.Humidity}}</td>
+      <td class="frc-td">{{weather.Temp.Morn}}</td>
+      <td class="frc-td">{{weather.Temp.Day}}</td>
+      <td class="frc-td">{{weather.Temp.Eve}}</td>
+      <td class="frc-td">{{weather.Temp.Night}}</td>
+      <td class="frc-td">{{weather.Speed}}</td>
+      <td class="frc-td">{{weather.Weather[0].Description}}</td>
+      <td class="frc-td"><img [src]='"http://openweathermap.org/img/w/" + weather.Weather[0].Icon + ".png"' /></td>
+    </tr>
+  </table>
+</div>

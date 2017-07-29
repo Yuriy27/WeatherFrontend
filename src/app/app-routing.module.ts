@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from "./weather/weather.component";
 import { CitiesComponent } from "./cities/cities.component";
 import { HistoryComponent } from "./history/history.component";
+import { ForecastTableComponent } from './forecast-table/forecast-table.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'weather',
-    component: WeatherComponent
+    component: WeatherComponent,
+    children: [
+      {
+        path: ':city/:days',
+        component: ForecastTableComponent
+      }
+    ]
   },
   {
     path: 'cities',
