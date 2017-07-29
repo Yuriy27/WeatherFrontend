@@ -39,8 +39,14 @@ export class ForecastTableComponent implements OnInit, OnDestroy {
         let city = params['city'];
        let days = +params['days'];
        this.weatherService.getForecast(city, days)
-        .then(forecasts => this.forecasts = forecasts)
-        .catch(() => this.error = 'not found');
+        .then(forecasts => {
+          this.forecasts = forecasts;
+          this.error = null;
+        })
+        .catch(() => {
+          this.error = 'not found';
+          this.forecasts = null;
+        });
       });
   }
 
