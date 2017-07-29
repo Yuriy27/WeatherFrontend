@@ -1,5 +1,5 @@
 <div *ngIf="forecasts" class="row">
-  <h5><span class="badge badge-primary">Forecast for city {{forecasts.City.Name}}</span></h5>
+  <!-- <h5><span class="badge badge-primary">Forecast for city {{forecasts.City.Name}}</span></h5> -->
   <table class="table table-bordered table-striped forecast-table">
     <tr>
       <th class="frc-th">Date<div><img src="assets/images/icons/date.png" class="w-icon"/></div></th>
@@ -13,8 +13,8 @@
       <th class="frc-th">Description<div><img src="assets/images/icons/description.png" class="w-icon" /></div></th>
       <th class="frc-th">Icon</th>
     </tr>
-    <tr *ngFor="let weather of forecasts.list">
-      <td class="frc-td">date</td>
+    <tr *ngFor="let weather of forecasts.list; let i = index">
+      <td class="frc-td">{{getDate(i)}}</td>
       <td class="frc-td">{{weather.Pressure}}</td>
       <td class="frc-td">{{weather.Humidity}}</td>
       <td class="frc-td">{{weather.Temp.Morn}}</td>
