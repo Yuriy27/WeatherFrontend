@@ -14,6 +14,8 @@ import { WeatherComponent } from './weather/weather.component';
 import { CitiesComponent } from './cities/cities.component';
 import { HistoryComponent } from './history/history.component';
 import { ForecastTableComponent } from './forecast-table/forecast-table.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ForecastTableComponent } from './forecast-table/forecast-table.componen
     WeatherComponent,
     CitiesComponent,
     HistoryComponent,
-    ForecastTableComponent
+    ForecastTableComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
