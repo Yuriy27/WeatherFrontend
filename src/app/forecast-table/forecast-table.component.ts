@@ -26,14 +26,6 @@ export class ForecastTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // this.sub = this.route.paramMap.switchMap((params: ParamMap) => {
-    //   let city = params.get('city');
-    //   let days = +params.get('days');
-    //   let resp = this.weatherService.getForecast(city, days);
-    //   return resp;
-    // }).subscribe(forecasts => {
-    //   this.forecasts = forecasts as Forecast;
-    // });
     this.sub = this.route.params
       .subscribe(params => {
         let city = params['city'];
